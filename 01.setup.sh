@@ -14,3 +14,5 @@ sed -i 's/atenart/nextthingco/' CHIP-buildroot/package/dtc-overlay/dtc-overlay.m
 # multistrap dependencies
 sudo apt-get install multistrap qemu-user-static live-build
 
+#patch multistrap
+sudo sed -i 's/\$forceyes //' /usr/sbin/multistrap
