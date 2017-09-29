@@ -78,7 +78,8 @@ exit 0" | tee $ROOTFS_DIR/etc/rc.local
 install_network_config () {
   # Fix DNS resolution
   echo "nameserver 8.8.8.8" | tee $ROOTFS_DIR/etc/resolv.conf
-
+  mkdir -p $ROOTFS_DIR/etc/modules-load.d
+  echo "g_hid" | tee $ROOTFS_DIR/etc/modules-load.d/g_hid.conf
   # Customize /etc/network/interfaces
   #cp $RESOURCES_DIR/config/interfaces $ROOTFS_DIR/etc/network/interfaces
 echo "auto lo

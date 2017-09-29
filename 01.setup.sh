@@ -16,3 +16,16 @@ sudo apt-get install multistrap qemu-user-static live-build
 
 #patch multistrap
 sudo sed -i 's/\$forceyes //' /usr/sbin/multistrap
+
+cd -
+git clone https://github.com/NextThingCo/CHIP-linux.git
+cd "$PWD/CHIP-linux"
+git checkout nextthing/4.4/chi
+
+cd "$PWD/CHIP-SDK/CHIP-buildroot"
+git apply $PWD/01.patch
+
+cd "$PWD/CHIP-linux"
+git apply $PWD/02.patch
+
+sed -i "/^BR2_LINUX_KERNEL_CUSTOM_LOCAL_PATH=/cBR2_LINUX_KERNEL_CUSTOM_LOCAL_PATH=\"$PWD/CHIP-linuxaaa\""  $PWD/CHIP-SDK/CHIP-buildroot/configs/chippro_defconfig

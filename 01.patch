@@ -1,0 +1,43 @@
+diff --git a/configs/chippro_defconfig b/configs/chippro_defconfig
+index b7fbbf7..cc54a2a 100644
+--- a/configs/chippro_defconfig
++++ b/configs/chippro_defconfig
+@@ -18,9 +18,15 @@ BR2_ROOTFS_OVERLAY="$(TOPDIR)/board/nextthing/chippro/overlay"
+ BR2_ROOTFS_POST_BUILD_SCRIPT="$(TOPDIR)/board/nextthing/chippro/post-build.sh"
+ BR2_ROOTFS_POST_IMAGE_SCRIPT="$(TOPDIR)/board/nextthing/chippro/post-image.sh"
+ BR2_LINUX_KERNEL=y
+-BR2_LINUX_KERNEL_CUSTOM_GIT=y
+-BR2_LINUX_KERNEL_CUSTOM_REPO_URL="https://github.com/NextThingCo/CHIP-linux"
+-BR2_LINUX_KERNEL_CUSTOM_REPO_VERSION="nextthing/4.4/chip"
++
++#zrr
++#BR2_LINUX_KERNEL_CUSTOM_GIT=y
++#BR2_LINUX_KERNEL_CUSTOM_REPO_URL="https://github.com/NextThingCo/CHIP-linux"
++#BR2_LINUX_KERNEL_CUSTOM_REPO_VERSION="nextthing/4.4/chip"
++
++BR2_LINUX_KERNEL_CUSTOM_LOCAL=y
++BR2_LINUX_KERNEL_CUSTOM_LOCAL_PATH="/home/zhangrr/CHIP-linux"
++
+ BR2_LINUX_KERNEL_PATCH="wext_priv.patch"
+ BR2_LINUX_KERNEL_USE_CUSTOM_CONFIG=y
+ BR2_LINUX_KERNEL_CUSTOM_CONFIG_FILE="$(TOPDIR)/board/nextthing/chippro/linux.config"
+diff --git a/board/nextthing/chippro/linux.config b/board/nextthing/chippro/linux.config
+index 74b766f..0658b3a 100644
+--- a/board/nextthing/chippro/linux.config
++++ b/board/nextthing/chippro/linux.config
+@@ -902,3 +902,15 @@ CONFIG_CRYPTO_SHA512_ARM=m
+ CONFIG_CRYPTO_AES_ARM_BS=m
+ CONFIG_CRYPTO_AES_ARM_CE=m
+ CONFIG_CRYPTO_GHASH_ARM_CE=m
++#zrr
++CONFIG_MODULES=y
++CONFIG_MODULE_UNLOAD=y
++CONFIG_USB_LIBCOMPOSITE=m
++CONFIG_USB_CONFIGFS=m
++CONFIG_USB_MASS_STORAGE=m
++CONFIG_USB_G_PRINTER=m
++CONFIG_USB_ETH=m
++CONFIG_USB_G_HID=m
++
++CONFIG_HID=m
++CONFIG_USB_HID=m
