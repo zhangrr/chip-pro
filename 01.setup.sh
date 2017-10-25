@@ -20,5 +20,7 @@ sudo sed -i 's/\$forceyes //' /usr/sbin/multistrap
 
 cd $HERE
 git clone https://github.com/NextThingCo/CHIP-linux.git --single-branch --branch nextthing/4.4/chip --depth 1
+echo "BR2_LINUX_KERNEL_CUSTOM_LOCAL=y" >> $HERE/CHIP-SDK/CHIP-buildroot/configs/chippro_defconfig
+echo "BR2_LINUX_KERNEL_CUSTOM_LOCAL_PATH=\"$HERE/CHIP-linux\"" >> $HERE/CHIP-SDK/CHIP-buildroot/configs/chippro_defconfig
 
-sed -i "/^BR2_LINUX_KERNEL_CUSTOM_LOCAL_PATH=/cBR2_LINUX_KERNEL_CUSTOM_LOCAL_PATH=\"$HERE/CHIP-linux\""  $HERE/CHIP-SDK/CHIP-buildroot/configs/chippro_defconfig
+#sed -i "/^BR2_LINUX_KERNEL_CUSTOM_LOCAL_PATH=/cBR2_LINUX_KERNEL_CUSTOM_LOCAL_PATH=\"$HERE/CHIP-linux\""  $HERE/CHIP-SDK/CHIP-buildroot/configs/chippro_defconfig
